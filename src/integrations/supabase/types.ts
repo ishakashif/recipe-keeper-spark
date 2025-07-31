@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      recipes: {
+        Row: {
+          cook_time: number | null
+          created_at: string
+          cuisine: Database["public"]["Enums"]["cuisine_type"]
+          difficulty: Database["public"]["Enums"]["difficulty_level"]
+          id: string
+          ingredients: string[]
+          instructions: string
+          prep_time: number | null
+          servings: number | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cook_time?: number | null
+          created_at?: string
+          cuisine?: Database["public"]["Enums"]["cuisine_type"]
+          difficulty?: Database["public"]["Enums"]["difficulty_level"]
+          id?: string
+          ingredients: string[]
+          instructions: string
+          prep_time?: number | null
+          servings?: number | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cook_time?: number | null
+          created_at?: string
+          cuisine?: Database["public"]["Enums"]["cuisine_type"]
+          difficulty?: Database["public"]["Enums"]["difficulty_level"]
+          id?: string
+          ingredients?: string[]
+          instructions?: string
+          prep_time?: number | null
+          servings?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +91,16 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      cuisine_type:
+        | "italian"
+        | "mexican"
+        | "asian"
+        | "american"
+        | "french"
+        | "indian"
+        | "mediterranean"
+        | "other"
+      difficulty_level: "easy" | "medium" | "hard"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +227,18 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      cuisine_type: [
+        "italian",
+        "mexican",
+        "asian",
+        "american",
+        "french",
+        "indian",
+        "mediterranean",
+        "other",
+      ],
+      difficulty_level: ["easy", "medium", "hard"],
+    },
   },
 } as const
